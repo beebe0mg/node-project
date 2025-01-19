@@ -1,10 +1,11 @@
-var figlet = require("figlet");
+const express = require('express')
+const app = express()
+const port = 3000
 
-figlet("a3qua19", function (err, data) {
-  if (err) {
-    console.log("Something went wrong...");
-    console.dir(err);
-    return;
-  }
-  console.log(data);
-});
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
