@@ -23,12 +23,22 @@ app.get('/', function (req, res) {
 //     res.send({'message' : 'Hello World!'});
 // })
 
-app.get('/sound/:name', function (req, res) {
-    const q = req.params
+// app.get('/sound/:name', function (req, res) {
+//     const q = req.params
 
-    if(q.name == "cat") res.send('야옹')
-    if(q.name == "dog") res.send('멍멍')
-    if(q.name == "rabbit") res.send('깡총')
+//     if(q.name == "cat") res.send('야옹')
+//     if(q.name == "dog") res.send('멍멍')
+//     if(q.name == "rabbit") res.send('깡총')
+// })
+
+app.get('/sound/:name', function (req, res) {
+    const { name } = req.params
+    console.log(name);
+
+    if(name == "cat") res.json({'sound' : '야옹'})
+    else if(name == "dog") res.json({'sound' : '멍멍'})
+    else if(name == "rabbit") res.json({'sound' : '깡총'})
+    else res.json({'sound' : '알 수 없음 '})
 })
 
 app.listen(port, () => { 
