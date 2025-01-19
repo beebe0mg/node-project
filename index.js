@@ -10,11 +10,17 @@ app.get('/user/:id', function (req, res) {
     // const q = req.params
     // console.log(q.id);
 
-    const q = req.query
-    console.log(q.q);
-    console.log(q.name);
-    res.json({'userid' : q.name})
+    // const q = req.query
+    // console.log(q.q);
+    // console.log(q.name);
+    // res.json({'userid' : q.name})
 
+    const p = req.params;
+    console.log(p);
+    const q = req.query;
+    console.log(q);
+
+    res.send({'message' : 'Hello World!'});
 })
 
 app.get('/cat', function (req, res) {
