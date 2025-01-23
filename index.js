@@ -44,3 +44,13 @@ app.get('/sound/:name', function (req, res) {
 app.listen(port, () => { 
     console.log(`Example app listening on port ${port}`)
 })
+
+// const port = 3000
+// app.listen(port, () => { 
+//  console.log(`Example app listening on port ${port}`)
+// })
+// 이 코드는
+// app.listen(3000, () => { 
+//  console.log(`Example app listening on port ${port}`)
+// })
+// 이것과 같음
