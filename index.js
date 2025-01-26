@@ -1,9 +1,13 @@
 const express = require('express')
 const app = express()
+const ejs = require('ejs')
 const port = 3000
 
+app.set('view engine', 'ejs')
+app.set('views', './views')
+
 app.get('/', function (req, res) {
-  res.send('Hello World')
+  res.render('example')
 })
 
 // app.get('/user/:id', function (req, res) {
