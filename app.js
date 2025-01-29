@@ -1,12 +1,28 @@
 const express = require('express')
 const ejs = require('ejs')
-const mysql = require('mysql2/promise');
+var mysql = require('mysql');
 const app = express()
 const port = 3000
 var bodyParser = require('body-parser')
 
 app.set('view engine', 'ejs')
 app.set('views', './views')
+
+var connection = mysql.createConnection({
+    host    : 'localhost3306',
+    user    : 'root',
+    password: '0000',
+    database: 'unidago'
+})
+
+connection.connect();
+
+connection.query('SELECT 1 + 1 AS solution', function(error, results, fields) {
+    if (error) throw error;
+    console.log('The solution is: ', results[0].solution);
+})
+
+connection.end();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
