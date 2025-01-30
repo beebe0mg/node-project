@@ -9,22 +9,30 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 
 var connection = mysql.createConnection({
-    host    : 'localhost3306',
-    user    : 'root',
+    host    : '127.0.0.1',
+    user    : 'testusers',
     password: '0000',
-    database: 'unidago'
-})
+    database: 'test',
+    port: 3306
+});
 
-connection.connect();
-
-connection.query('SELECT 1 + 1 AS solution', function(error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-})
-
-connection.end();
-
-app.use(bodyParser.urlencoded({ extended: false }))
+connection.connect((error) => {
+    if (error) {
+      console.error('Database connection failed:', error);
+      return;
+    }
+    console.log('Connected to MySQL database');
+  });
+  
+  const query = 'SELECT * FROM user'; // ✅ 테이블 이름 수정
+  
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      return;
+    }
+    console.log('User:', results); // ✅ 정상적으로 데이터를 출력
+  });
 
 app.get('/', (req, res) => {
     res.render('example')
